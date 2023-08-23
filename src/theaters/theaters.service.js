@@ -21,7 +21,7 @@ function listMoviesForTheater(movieId) {
     return knex("theaters")
         .join("movies_theaters", "theaters.theater_id", "movies_theaters.theater_id")
         .where({ movie_id: movieId })
-        .select("movies.*")
+        .select("theaters.*")
 }
 
 module.exports = {

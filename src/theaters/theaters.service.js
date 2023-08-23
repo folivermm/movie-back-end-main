@@ -8,7 +8,7 @@ function list() {
 
 // route should return all the `theaters` and, the movies playing at each 
 //theatre added to the `movies` key
-function listTheatersForMovie(theaterId) {
+function listMoviesForTheater(theaterId) {
     return knex("movies_theaters")
         .join("movies", "movies_theaters.movie_id", "movies.movie_id")
         .where({ theater_id: theaterId })
@@ -17,7 +17,7 @@ function listTheatersForMovie(theaterId) {
 // // GET /movies/:movieId/theaters = `/movies/1/theaters`
 // // This route should return all the `theaters` where the movie is playing.
 // uses `movies_theaters` table. 
-function listMoviesForTheater(movieId) {
+function listTheatersForMovie(movieId) {
     return knex("theaters")
         .join("movies_theaters", "theaters.theater_id", "movies_theaters.theater_id")
         .where({ movie_id: movieId })

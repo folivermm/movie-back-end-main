@@ -5,15 +5,10 @@ const theatersRouter = require("../theaters/theaters.router");
 const reviewsRouter = require("../reviews/reviews.router");
 
 router
-    .use("/:movieId/reviews")
-    .get(controller.movieExists, reviewsRouter)
-    .all(methodNotAllowed);
-
+    .use("/:movieId/reviews", controller.movieExists, reviewsRouter);
 
 router
-    .use("/:movieId/theaters")
-    .get(controller.movieExists, theatersRouter)
-    .all(methodNotAllowed);
+    .use("/:movieId/theaters", controller.movieExists, theatersRouter);
 
 
 router

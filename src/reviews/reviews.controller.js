@@ -4,34 +4,39 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 //UPDATE /reviews/:reviewId (incorrect ID)
 async function reviewIdExists(req, res, next) {
     const { reviewId } = req.params;
-    const review = await service.reviewIdExists(reviewId)
+    const review = await service.read(reviewId);
     if (review) {
-        res.locals.review = review
-        return next()
+        res.locals.review = review;
+        return next();
     }
-    next({ status: 404, message: "Review cannot be found." })
+    return next({
+        status: 404,
+        message: "Review cannot be found.",
+    });
 }
 
+// Creates an array of promises to fetch critic details
+// Fetch critic details concurrently using Promise.all
+// Attaches critic information to the corresponding reviews
+// Responds with the list of reviews along with critic details
 async function readReviewsForMovie(req, res) {
-    const reviews = await service.getReviewsForMovie(
+    const reviews = await service.readReviewsForMovie(
         res.locals.movie.movie_id
     );
-    // Create an array of promises to fetch critic details
+
     const criticPromises = reviews.map(review =>
         service.getCritic(review.critic_id)
     );
-    // Fetch critic details concurrently using Promise.all
+
     const critics = await Promise.all(criticPromises);
-    // Attach critic information to the corresponding reviews
     for (let i = 0; i < reviews.length; i++) {
         reviews[i].critic = critics[i];
     }
-    // Response with the list of reviews along with critic details
     res.json({ data: reviews });
 }
 
 
-//middlware to check update has requireed porperties 
+//middleware to check update has requireed porperties 
 function ReviewUpdateFieldsExists(req, res, next) {
     const { data: { score = null, content = null } = {} } = req.body;
     const updatedReview = {};
@@ -57,7 +62,7 @@ async function update(req, res) {
         ...req.body.data,
         review_id: res.locals.review.review_id,
     };
-    await reviewsService.update(updatedReviewData);
+    await service.update(updatedReviewData);
     const updatedReview = await service.read(res.locals.review.review_id);
     const critic = await service.getCritic(res.locals.review.critic_id);
     const reviewToReturn = {

@@ -1,6 +1,8 @@
-const router = require(express).Router();
-const controller = require("./movies.controller");
+const router = require("express").Router({ mergeParams: true });
 const methodNotAllowed = require("../errors/methodNotAllowed");
+const controller = require("./movies.controller");
+const theatersRouter = require("../theaters/theaters.router");
+const reviewsRouter = require("../reviews/reviews.router");
 
 router
     .route("/")
@@ -14,12 +16,12 @@ router
 
 router
     .route("/:movieId/theaters")
-    .get(controller.readTheatersPlayingMovie)
+    .get(controller.movieExists, theatersRouter)
     .all(methodNotAllowed);
 
 router
     .route("/:movieId/reviews")
-    .get(controller.readMovieReview)
+    .get(controller.movieExists, reviewsRouter)
     .all(methodNotAllowed);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const knex = require("../db/connection");
 
-// /reviews/:reviewId
+// table query to handle GET /reviews/:reviewId
 function read(reviewId) {
     return knex("reviews")
         .select("*")
@@ -8,7 +8,7 @@ function read(reviewId) {
         .first();
 }
 
-//UPDATE /reviews/:reviewId
+// table query to handle UPDATE /reviews/:reviewId
 function update(updatedReview) {
     return knex("reviews")
         .select("*")
@@ -16,15 +16,15 @@ function update(updatedReview) {
         .update(updatedReview)
 }
 
-// GET /movies/:movieId/reviews
-// This route should return all the `reviews` for the movie, 
-// including all the `critic` details added to a `critic` key of the review.
+// table query to handle GET /movies/:movieId/reviews
+// this shows all the `reviews` for the movie 
 function readReviewsForMovie(movieId) {
     return knex("reviews")
         .select("*")
         .where({ movie_id: movieId });
 }
 
+// table query to include all the `critic` details in /movies/:movieId/reviews 
 function getCritic(criticId) {
     return knex("critics")
         .select("*")
@@ -32,7 +32,7 @@ function getCritic(criticId) {
         .first();
 }
 
-//delete review 
+// table query to DELETE review 
 function destroy(reviewId) {
     return knex("reviews").where({ review_id: reviewId }).del();
 }

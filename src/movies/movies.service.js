@@ -1,10 +1,8 @@
 const knex = require("../db/connection");
 
-//- `GET /movies?is_showing=true`
-//return _only those movies where the movie is currently showing in theaters._ 
-//This means you will need to check the `movies_theaters` table.
-
-
+// table query to handle `GET /movies?is_showing=true`
+// shows movies where the movie is currently showing in theaters
+// uses movies and `movies_theaters` table.
 function list(isShowing) {
     if (isShowing) {
         return knex("movies")
@@ -16,7 +14,7 @@ function list(isShowing) {
     return knex("movies").select("*");
 }
 
-// - `GET /movies/:movieId`
+// table query to handle `GET /movies/:movieId`
 function read(movieId) {
     return knex("movies")
         .select("*")

@@ -57,6 +57,11 @@ function ReviewUpdateFieldsExists(req, res, next) {
 }
 
 //UPDATE /reviews/:reviewId
+// Extract data from the request body and add the review_id
+// Update the review data in the database using the service
+// Fetch the critic details associated with the updated review
+// Make the response object containing updated review and critic info
+// Responds containing the updated review and critic information
 async function update(req, res) {
     const updatedReviewData = {
         ...req.body.data,

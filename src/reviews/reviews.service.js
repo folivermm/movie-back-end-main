@@ -44,7 +44,3 @@ module.exports = {
     getCritic,
     destroy,
 };
-
-
-
-

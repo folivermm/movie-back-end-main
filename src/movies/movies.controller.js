@@ -12,7 +12,7 @@ async function movieExists(req, res, next) {
     next({ status: 404, message: "Movie cannot be found" })
 }
 
-// read movies/:movie_id 
+// read movies/:movie_id  
 async function read(req, res) {
     const movie = res.locals.movie;
     res.json({ data: movie });

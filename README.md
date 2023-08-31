@@ -1,6 +1,6 @@
 # Movies Website Backend
 
-## Introduction
+##Introduction
 
 This backend repository is responsible for setting up the database and building various routes that will be utilized by the frontend application. The development process involved making changes to both the data tier and the application tier, following an inside-out development workflow.
 
@@ -57,7 +57,6 @@ The following instructions are provided to set up both the backend and frontend 
 
 Check out the frontend repository and README at: [project-we-love-movies-frontend](https://github.com/dakotawatkins/project-we-love-movies-frontend).
 
-
 1. **Install dependencies and start**
  	- npm install
  	- npm start
@@ -87,8 +86,6 @@ Copy the `.env.sample` file to create your `.env` file:
 - Open the `.env` file you created earlier and replace the value of `DATABASE_URL` with the copied database URL.
 
 5. **Deploy Backend on Render:**
-
-4. **Deploy Backend on Render:**
 - Connect your GitHub backend repository and create a web service.
 - Change commands to: `npm install` and `npm start`.
 - **IMPORTANT:** Add an environmental variable with key `DATABASE_URL` and value as your Elephant SQL URL.
@@ -108,10 +105,12 @@ In the backend terminal window, run:
 
 4. **Frontend Terminal:**
 In the frontend terminal window, run:
-- npx serve -s build --listen 3000
 
+- npx serve -s build --listen 3000
 
 5. **Visit the Site:**
 Open your web browser and visit the website at:
 
 http://localhost:3000/
+
+

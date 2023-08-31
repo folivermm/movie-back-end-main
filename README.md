@@ -1,6 +1,6 @@
 # Movies Website Backend
 
-##Introduction
+## Introduction
 
 This backend repository is responsible for setting up the database and building various routes that will be utilized by the frontend application. The development process involved making changes to both the data tier and the application tier, following an inside-out development workflow.
 

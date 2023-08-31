@@ -86,7 +86,7 @@ Copy the `.env.sample` file to create your `.env` file:
 - Open the `.env` file you created earlier and replace the value of `DATABASE_URL` with the copied database URL.
 
 5. **Deploy Backend on Render:**
-- Connect your GitHub backend repository and create a web service.
+- Create a web service and connect the GitHub backend repository.
 - Change commands to: `npm install` and `npm start`.
 - **IMPORTANT:** Add an environmental variable with key `DATABASE_URL` and value as your Elephant SQL URL.
 - Create the web service.

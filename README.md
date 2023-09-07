@@ -55,7 +55,8 @@ The following instructions are provided to set up both the backend and frontend 
 
 ### Frontend Repository
 
-Check out the frontend repository and README at: [project-we-love-movies-frontend](https://github.com/dakotawatkins/project-we-love-movies-frontend).
+Check out the frontend repository and README at: [
+movies-front-end](https://github.com/folivermm/movies-front-end).
 
 1. **Install dependencies and start**
  	- npm install
@@ -64,6 +65,7 @@ Check out the frontend repository and README at: [project-we-love-movies-fronten
    If you encounter any issues while setting up the frontend, try the following steps:
  	- npm audit fix --force
  	- npm install util
+
 3. **Run the build process:**
  	- npm run build	
 
@@ -85,12 +87,6 @@ Copy the `.env.sample` file to create your `.env` file:
 - Copy the URL of the created database.
 - Open the `.env` file you created earlier and replace the value of `DATABASE_URL` with the copied database URL.
 
-5. **Deploy Backend on Render:**
-- Create a web service and connect the GitHub backend repository.
-- Change commands to: `npm install` and `npm start`.
-- **IMPORTANT:** Add an environmental variable with key `DATABASE_URL` and value as your Elephant SQL URL.
-- Create the web service.
-
 ### Frontend and Backend Integration
 1. **Frontend Workspace:**
 Open the frontend repository and add the backend repository as a workspace.
@@ -103,6 +99,8 @@ In the backend terminal window, run:
 
 - npm start
 
+- **IMPORTANT:** Make sure to match the port number from the server in the .env.development file on the frontend.  
+
 4. **Frontend Terminal:**
 In the frontend terminal window, run:
 
@@ -112,5 +110,4 @@ In the frontend terminal window, run:
 Open your web browser and visit the website at:
 
 http://localhost:3000/
-
 

@@ -99,7 +99,7 @@ In the backend terminal window, run:
 
 - npm start
 
-- **IMPORTANT:** Make sure to match the port number from the server in the .env.development file on the frontend.  
+- **IMPORTANT:** Make sure port number from server matches the .env.development file on the frontend.  
 
 4. **Frontend Terminal:**
 In the frontend terminal window, run:
